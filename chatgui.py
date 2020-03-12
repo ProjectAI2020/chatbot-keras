@@ -82,7 +82,7 @@ def send():
 
 
 base = Tk()
-base.title("Hello")
+base.title("Placement Cell")
 base.geometry("400x500")
 base.resizable(width=FALSE, height=FALSE)
 
@@ -92,7 +92,7 @@ ChatLog = Text(base, bd=0, bg="white", height="8", width="50", font="Arial",)
 ChatLog.config(state=DISABLED)
 
 #Bind scrollbar to Chat window
-scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="heart")
+scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="mouse")
 ChatLog['yscrollcommand'] = scrollbar.set
 
 #Create Button to send message
@@ -108,8 +108,8 @@ EntryBox = Text(base, bd=0, bg="white",width="29", height="5", font="Arial")
 #Place all components on the screen
 scrollbar.place(x=376,y=6, height=386)
 ChatLog.place(x=6,y=6, height=386, width=370)
-EntryBox.place(x=128, y=401, height=90, width=265)
-SendButton.place(x=6, y=401, height=90)
+EntryBox.place(x=6, y=405, height=45, width=370)
+SendButton.place(x=6, y=450, height=45,width=370)
 
 base.mainloop()
 
