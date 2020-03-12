@@ -15,6 +15,13 @@
         },
 
         {
+            "tag": "greeting-name-enquiry",
+            "patterns": ["What is your name", "What are you called", "Do you have a name"],
+            "responses": ["I don't have a name. I am just called Bot"],
+            "context": [""]
+        },
+
+        {
             "tag": "goodbye",
             "patterns": ["Bye", "See you later", "Goodbye", "Nice talking to you"],
             "responses": ["Bye", "See you", "Have a nice day", "Bye! Let me know if you have anymore queries"],
@@ -32,6 +39,69 @@
             "tag": "no-answer",
             "patterns": [],
             "responses": ["Sorry, I can't understand you", "Please give me more info"],
+            "context": [""]
+        },
+
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": [],
+            "context": [""]
+        },
+
+        {
+            "tag": "help-query",
+            "patterns": ["I need some help", "help", "need help", "I have a question", "I have a query"],
+            "responses": ["I can assist you with any queries regarding placement in LPU like highest package, how many and which companies recruit, and what campus placement is."],
+            "context": [""]
+        },
+
+        {
+            "tag": "help-person",
+            "patterns": ["I want to talk to the placement cell", "I want to contact placement cell", "placement cell contact information"],
+            "responses": ["You can contact Dr. Harpal Thethi. \nharpal.thethi@lpu.co.in\n99150-20421"],
+            "context": [""]
+        },
+
+        {
+            "tag": "max-package",
+            "patterns": ["What is the highest package", "highest domestic package", "highest salary"],
+            "responses": ["Highest salary package availed is ₹42L per annum by Tanya Arora"],
+            "context": [""]
+        },
+
+        {
+            "tag": "max-companies",
+            "patterns": ["How many companies recruit", "highest no of companies"],
+            "responses": ["650+ companies recurit at LPU"],
+            "context": [""]
+        },
+
+        {
+            "tag": "top-recruiters",
+            "patterns": ["which companies recruit", "top recruiters"],
+            "responses": ["Cognizant, Tech Mahindra, Amazon, Capgemini are one of the top recruiters at LPU in recent years."],
+            "context": [""]
+        },
+
+        {
+            "tag": "campus-recuritment",
+            "patterns": ["what is campus recuritment", "what is campus placements"],
+            "responses": ["It is the process whereby employers hire students who are about to graduate from college, and universities."],
+            "context": [""]
+        },
+
+        {
+            "tag": "register",
+            "patterns": ["How to register", "how to select a company", "register at particular company"],
+            "responses": ["Please get in touch with the placement cell or visit UMS for more info."],
+            "context": [""]
+        },
+
+        {
+            "tag": "offers",
+            "patterns": ["can I get more than one offer", "what happens if I get more than one offer", "can I get two offers", "can I get three offers"],
+            "responses": ["You can get more than one offer but it has certain conditions attached to it. Please contact the placement cell for more details."],
             "context": [""]
         }
     ]
