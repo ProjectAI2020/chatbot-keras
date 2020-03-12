@@ -1,0 +1,38 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": ["Hi", "Hello there", "Hi there", "Hey", "Hello", "Good morning", "Good afternoon"],
+            "responses": ["Hello!", "Hi there! How can I help you?"],
+            "context": [""]
+        },
+
+        {
+            "tag": "greeting-human",
+            "patterns": ["Hello sir", "Hello ma'am", "Good morning sir", "Good afternoon sir", "Good morning ma'am", "Good afternoon ma'am"],
+            "responses": ["Hello!", "Hi there! How can I help you?"],
+            "context": [""]
+        },
+
+        {
+            "tag": "goodbye",
+            "patterns": ["Bye", "See you later", "Goodbye", "Nice talking to you"],
+            "responses": ["Bye", "See you", "Have a nice day", "Bye! Let me know if you have anymore queries"],
+            "context": [""]
+        },
+
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "Thank you", "Thanks for helping me", "Awesome", "That's helpful"],
+            "responses": ["Happy to help!", "My pleasure"],
+            "context": [""]
+        },
+
+        {
+            "tag": "no-answer",
+            "patterns": [],
+            "responses": ["Sorry, I can't understand you", "Please give me more info"],
+            "context": [""]
+        }
+    ]
+}
