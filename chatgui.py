@@ -66,6 +66,7 @@ def chatbot_response(message):
 
 # create a GUI using tkinter
 import tkinter as tk
+import speech.speech2text as speech
 
 class GUI:
     def __init__(self):
@@ -88,7 +89,22 @@ class GUI:
 
             self.ChatLog.config(state=tk.DISABLED)
             self.ChatLog.yview(tk.END)
-        
+    
+    def get_voice(self):
+        #Give Feedback to user
+        self.EntryBox.insert(0, "Listening...")
+        self.EntryBox.config(state=tk.DISABLED)
+
+        #Convert Speech to Text
+        voice = speech.SpeechText()
+        response = voice.convert_speech_text()
+
+        self.EntryBox.config(state=tk.NORMAL)
+        #Output voice response
+        self.EntryBox.delete(0, tk.END)
+        if not response=="":
+            self.EntryBox.insert(0, response)
+
     def create_gui(self):
         #Create Chat window
         self.ChatLog = tk.Text(self.base, bg="white", height="8", width="50")
@@ -98,18 +114,18 @@ class GUI:
         self.scrollbar = tk.Scrollbar(self.base, command=self.ChatLog.yview, cursor="mouse")
         self.ChatLog['yscrollcommand'] = self.scrollbar.set
 
+        #Create the box to enter message
+        self.EntryBox = tk.Entry(self.base, bg="white",width="50", font="Arial")
+        self.EntryBox.bind("<Return>", self.send)
+        self.EntryBox.focus_set()
+
         #Create Button to send message
         self.SendButton = tk.Button(self.base, text="Send", 
                         width="12", height=5, command=self.send)
 
         #Create Button to use voice
         self.VoiceButton = tk.Button(self.base, text="Voice", 
-                        width="12", height=5, command=self.send)
-
-        #Create the box to enter message
-        self.EntryBox = tk.Entry(self.base, bg="white",width="50", font="Arial")
-        self.EntryBox.bind("<Return>", self.send)
-
+                        width="12", height=5, command=self.get_voice)
 
         #Place all components on the screen
         self.scrollbar.place(x=582,y=7, height=384)
