@@ -1,4 +1,4 @@
 nltk==3.4.5
 Keras==2.3.1
-tensorflow==1.15.2
+tensorflow
 SpeechRecognition==3.8.1
