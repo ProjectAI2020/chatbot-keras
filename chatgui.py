@@ -1,4 +1,8 @@
+# Requierd Modules - tkinter, nltk, keras, tenserflow
+
 import nltk
+nltk.download('punkt')
+nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 import pickle
@@ -61,55 +65,62 @@ def chatbot_response(message):
     return result
 
 # create a GUI using tkinter
-import tkinter
-from tkinter import *
+import tkinter as tk
+
+class GUI:
+    def __init__(self):
+        self.base = tk.Tk()
+        self.base.title("Placement Cell")
+        self.base.geometry("600x440")
+        self.base.resizable(0,0)
+
+    def send(self, event=None):
+        msg = self.EntryBox.get().strip()
+        self.EntryBox.delete("0", tk.END)
+
+        if msg != '':
+            self.ChatLog.config(state= tk.NORMAL)
+            self.ChatLog.insert(tk.END, "You: " + msg + '\n\n')
+            self.ChatLog.config(foreground="#442265", font=("Verdana", 12 ))
+
+            res = chatbot_response(msg)
+            self.ChatLog.insert(tk.END, "Bot: " + res + '\n\n')
+
+            self.ChatLog.config(state=tk.DISABLED)
+            self.ChatLog.yview(tk.END)
+        
+    def create_gui(self):
+        #Create Chat window
+        self.ChatLog = tk.Text(self.base, bg="white", height="8", width="50")
+        self.ChatLog.config(state=tk.DISABLED)
+
+        #Bind scrollbar to Chat window
+        self.scrollbar = tk.Scrollbar(self.base, command=self.ChatLog.yview, cursor="mouse")
+        self.ChatLog['yscrollcommand'] = self.scrollbar.set
+
+        #Create Button to send message
+        self.SendButton = tk.Button(self.base, text="Send", 
+                        width="12", height=5, command=self.send)
+
+        #Create Button to use voice
+        self.VoiceButton = tk.Button(self.base, text="Voice", 
+                        width="12", height=5, command=self.send)
+
+        #Create the box to enter message
+        self.EntryBox = tk.Entry(self.base, bg="white",width="50", font="Arial")
+        self.EntryBox.bind("<Return>", self.send)
 
 
-def send():
-    msg = EntryBox.get("1.0",'end-1c').strip()
-    EntryBox.delete("0.0",END)
+        #Place all components on the screen
+        self.scrollbar.place(x=582,y=7, height=384)
+        self.ChatLog.place(x=6,y=6, height=386, width=578)
+        self.EntryBox.place(x=6, y=405, width=420)
+        self.SendButton.place(x=430, y=405, height=25,width=80)
+        self.VoiceButton.place(x=515, y=405, height=25,width=80)
 
-    if msg != '':
-        ChatLog.config(state=NORMAL)
-        ChatLog.insert(END, "You: " + msg + '\n\n')
-        ChatLog.config(foreground="#442265", font=("Verdana", 12 ))
-
-        res = chatbot_response(msg)
-        ChatLog.insert(END, "Bot: " + res + '\n\n')
-
-        ChatLog.config(state=DISABLED)
-        ChatLog.yview(END)
+        self.base.mainloop()
 
 
-base = Tk()
-base.title("Placement Cell")
-base.geometry("400x500")
-base.resizable(width=FALSE, height=FALSE)
-
-#Create Chat window
-ChatLog = Text(base, bd=0, bg="white", height="8", width="50", font="Arial",)
-
-ChatLog.config(state=DISABLED)
-
-#Bind scrollbar to Chat window
-scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="mouse")
-ChatLog['yscrollcommand'] = scrollbar.set
-
-#Create Button to send message
-SendButton = Button(base, font=("Verdana",12,'bold'), text="Send", width="12", height=5,
-                    bd=0, bg="#32de97", activebackground="#3c9d9b",fg='#ffffff',
-                    command= send )
-
-#Create the box to enter message
-EntryBox = Text(base, bd=0, bg="white",width="29", height="5", font="Arial")
-#EntryBox.bind("<Return>", send)
-
-
-#Place all components on the screen
-scrollbar.place(x=376,y=6, height=386)
-ChatLog.place(x=6,y=6, height=386, width=370)
-EntryBox.place(x=6, y=405, height=45, width=370)
-SendButton.place(x=6, y=450, height=45,width=370)
-
-base.mainloop()
-
+if __name__ == "__main__":
+    gui_object = GUI()
+    gui_object.create_gui()
