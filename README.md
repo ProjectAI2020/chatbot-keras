@@ -10,3 +10,6 @@ For this project we used Keras, which runs on top of TensorFlow, to build, train
   Note: TensorFlow requires 64-bit version of python3 installed. This bot will not function without TensorFlow
 - Run **train_chatbot.py** to generate the model
 - Run **chatgui.py** to run the chatbot
+
+## Project Report
+[Click Here](https://drive.google.com/open?id=13RZQ-ShXS7q5W_BZRb1cVEyU0vzgf5NG) to view the project report.
